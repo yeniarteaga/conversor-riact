@@ -13,7 +13,7 @@ function Conversor() {
   
   function convertirTextoAVoz() {
     const synth = window.speechSynthesis
-    const utterThis = new speechSynthesisUtterance(TextoAVoz)
+    const utterThis = new speechSynthesisUtterance(textoAVoz)
     synth.speak(utterThis)
   }
   function resultado(event) {
@@ -31,12 +31,12 @@ function Conversor() {
       <h1>Conversor TTS STT</h1>
       <br />
       <h3>Conversor de texto a voz</h3>
-      <input type="text" id="textoAVoz" value={TextoAVoz} onChange=(cambiarTexto) /</>
+      <input type="text" id="textoAVoz" value={textoAVoz} onChange= {cambiarTexto} />
       <button onClick={convertirTextoAVoz}>Convertir</button>
 
-       <h3>Conversor de voz a texto</h3>
-       <button onClick={grabarVozATexto}>Grabar</button>
-       {vozATexto}
+      <h3>Conversor de voz a texto</h3>
+      <button onClick={grabarVozATexto}>Grabar</button>
+      {vozATexto}
     </>
   );
 

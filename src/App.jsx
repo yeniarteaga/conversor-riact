@@ -27,13 +27,13 @@ function App() {
   }
 
   if (logueado) { 
-    return <Conversor/>
+    return <Conversor />
   }
 
   return (
     <>
     <h1>Inicio de sesion</h1>
-      <input placeholder='Usuario' type="text" name="usuario" id="usuario" value=(usuario) onChange={/>
+      <input placeholder='Usuario' type="text" name="usuario" id="usuario" value={usuario} onChange={cambiarUsuario}/>
       <input placeholder='Clave' type="password" name="clave" id="clave" />
       <button onClick={ingresar}>Ingresar</button>
     </>
