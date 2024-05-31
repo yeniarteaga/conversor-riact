@@ -34,7 +34,7 @@ function App() {
     <>
     <h1>Inicio de sesion</h1>
       <input placeholder='Usuario' type="text" name="usuario" id="usuario" value={usuario} onChange={cambiarUsuario}/>
-      <input placeholder='Clave' type="password" name="clave" id="clave" />
+      <input placeholder='Clave' type="password" name="clave" id="clave" value={clave} onChange={cambiarClave}/>
       <button onClick={ingresar}>Ingresar</button>
     </>
   )
