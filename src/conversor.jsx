@@ -1,44 +1,45 @@
-
+import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { useState } from 'react'
 
-function conversor() {
-  const [texto, setTexto] = useState('')
-  const [voz, setvoz] = useState('')
+function Conversor() {
+  const [textoAVoz,setTextoAVoz] = useState('')
+  const [vozATexto,setVozATexto] = useState('')
 
   function cambiarTexto (evento) {
-    setTexto(evento.target.value)
+    setVozATexto(evento.target.value)
   }
   
-  function textoAVoz() {
-    const configuracion = new SpeechSynthesisUtterance(texto) 
-    speechSynthesis.speak(configuracion) 
+  function convertirTextoAVoz() {
+    const synth = window.speechSynthesis
+    const utterThis = new speechSynthesisUtterance(TextoAVoz)
+    synth.speak(utterThis)
+  }
+  function resultado(event) {
+    setVozATexto(event.results[0][0].transcript)
+  }
+  function grabarVozATexto() {
+    const recognition = new window.webkitSpeechRecognition()
+    recognition.lang = 'es-ES'
+    recognition.start()
+    recognition.onresult = resultado
   }
 
-  function vozATexto() {
-    const agente = new webkitSpeechRecognition()
-    agente.start()
-      agente.onresult = resultado
-  }
-  function resultado (informacion) {
-    console.log(informacion.results[0][0].transcript)
-      setVoz(informacion.results[0][0].transcript)
-      //informacion.results[0][0].transcript
-  }
+  return (
+    <>
+      <h1>Conversor TTS STT</h1>
+      <br />
+      <h3>Conversor de texto a voz</h3>
+      <input type="text" id="textoAVoz" value={TextoAVoz} onChange=(cambiarTexto) /</>
+      <button onClick={convertirTextoAVoz}>Convertir</button>
 
-    return (
-      <> 
-        <h1>conversor TTS y STT</h1>
-        <h2>conversor texto a voz</h2>
-        <input type="text" value={texto} onChange={cambiarTexto} />
-        <button onClick={textoAVoz}>Convertir</button>
-        <h2>conversor voz a texto</h2>
-        <button onclick={vozATexto}>Grabar</button>
-        {voz}
-      </>
-    )
+       <h3>Conversor de voz a texto</h3>
+       <button onClick={grabarVozATexto}>Grabar</button>
+       {vozATexto}
+    </>
+  );
+
 }
 
-export default conversor
+export default Conversor
