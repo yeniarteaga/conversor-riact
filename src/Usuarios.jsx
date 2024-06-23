@@ -5,7 +5,7 @@ function Usuario(recargar) {
   const [usuarios, setUsuarios] = useState([])
 
   async function obtenerusuarios() {
-    const peticion = await fetch('http://localhost:3000/usuarios', { credentials: 'include' })
+    const peticion = await fetch(inport.meta.env.VITE_HOSTBACKEND+ '/usuarios', { credentials: 'include' })
     if (peticion.ok) {
       const repuesta = await peticion.json()
       setUsuarios(repuesta)
@@ -13,7 +13,7 @@ function Usuario(recargar) {
   }
 
   async function eliminarusuario(id) {
-    const peticion = await fetch('http://localhost:3000/usuarios?id=' + id, { credentials: 'include', method: 'DELETE' })
+    const peticion = await fetch(inport.meta.env.VITE_HOSTBACKEND+ '/usuarios?id=' + id, { credentials: 'include', method: 'DELETE' })
     if (peticion.ok) {
       alert('usuario eliminado')
       obtenerusuarios();
