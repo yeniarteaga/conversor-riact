@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import Conversor from './Conversor1'
+import Conversor from './Conversor'
 import Usuarios from './Usuarios'
 import Registro from './Registro'
 
