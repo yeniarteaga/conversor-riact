@@ -8,12 +8,12 @@ function Conversor() {
   const [vozATexto,setVozATexto] = useState('')
 
   function cambiarTexto (evento) {
-    setVozATexto(evento.target.value)
+    setTextoAVoz(evento.target.value)
   }
   
   function convertirTextoAVoz() {
     const synth = window.speechSynthesis
-    const utterThis = new speechSynthesisUtterance(textoAVoz)
+    const utterThis = new SpeechSynthesisUtterance(textoAVoz)
     synth.speak(utterThis)
   }
   function resultado(event) {
